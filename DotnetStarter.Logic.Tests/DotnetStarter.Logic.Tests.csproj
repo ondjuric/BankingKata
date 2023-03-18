@@ -24,4 +24,15 @@
         <ProjectReference Include="..\DotnetStarter.Logic\DotnetStarter.Logic.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="HelloWorldTest.Test2Deposits.approved.txt" />
+      <None Remove="HelloWorldTest.Test3Deposits.approved.txt" />
+      <None Remove="HelloWorldTest.TestDeposit.approved.txt" />
+      <None Remove="HelloWorldTest.TestDepositAndWithdraw.approved.txt" />
+      <None Remove="HelloWorldTest.TestDepositDate.approved.txt" />
+      <None Remove="HelloWorldTest.TestDepositDateAndAmount.approved.txt" />
+      <None Remove="HelloWorldTest.TestDepositDateAndAmountAndBalance.approved.txt" />
+      <None Remove="HelloWorldTest.TestWithdraw.approved.txt" />
+    </ItemGroup>
+
 </Project>

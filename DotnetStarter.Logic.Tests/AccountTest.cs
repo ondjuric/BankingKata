@@ -1,15 +1,12 @@
 using System;
-using System.Runtime.InteropServices.JavaScript;
-using System.Security.Principal;
 using ApprovalTests;
-using ApprovalTests.Core;
 using ApprovalTests.Reporters;
 using Xunit;
 
 namespace DotnetStarter.Logic.Tests
 {
     [UseReporter(typeof(DiffReporter))]
-    public class HelloWorldTest
+    public class AccountTest
     {
         [Fact]
         public void TestDeposit()
@@ -84,6 +81,20 @@ namespace DotnetStarter.Logic.Tests
             a.Deposit(800);
             a.Withdraw(600);
             
+            Approvals.Verify(a.PrintStatement());
+        }
+        
+        [Fact]
+        public void Test2DepositsAnd2Withdraw()
+        {
+            var a = new Account();
+            int i = 1;
+            a.SetDateGetter(() => new DateTime(2015, 12, i++));
+            a.Deposit(800);
+            a.Withdraw(600);
+            a.Deposit(400);
+            a.Withdraw(100);
+
             Approvals.Verify(a.PrintStatement());
         }
         
