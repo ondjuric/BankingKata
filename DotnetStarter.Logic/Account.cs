@@ -3,12 +3,25 @@ using ApprovalUtilities.Utilities;
 
 namespace DotnetStarter.Logic.Tests;
 
+public class Transaction
+{
+    public DateTime TransactionDate { get; set; }
+    public int Amount { get; set; }
+
+    public string PrintLine()
+    {
+        return $"{TransactionDate.ToString("dd.MM.yyyy")} +{Amount}      {Amount}";
+    }
+}
+
 public class Account
 {
+    private readonly Transaction transaction = new Transaction();
+
     public void Deposit(int amount)
     {
-        TransactionDate = DateGetter();
-        Amount = amount;
+        transaction.TransactionDate = DateGetter();
+        transaction.Amount = amount;
     }
 
     public string PrintStatement()
@@ -16,14 +29,10 @@ public class Account
         var tab = "\t";
         return $@"
                 Date       Amount    Balance
-                {TransactionDate.ToString("dd.MM.yyyy")} +{Amount}      {Amount}
+                {transaction.PrintLine()}
 
     ".RemoveIndentation();
     }
-
-    public DateTime TransactionDate { get; set; }
-
-    public int Amount { get; set; }
 
     public void SetDateGetter(Func<DateTime> func)
     {

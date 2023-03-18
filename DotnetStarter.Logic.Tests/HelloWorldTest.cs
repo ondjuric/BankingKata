@@ -39,6 +39,17 @@ namespace DotnetStarter.Logic.Tests
             
             Approvals.Verify(a.PrintStatement());
         }
+        [Fact]
+        public void Test2Deposits()
+        {
+            var a = new Account();
+            int i = 1;
+            a.SetDateGetter(() => new DateTime(2015, 12, i++));
+            a.Deposit(600);
+            a.Deposit(600);
+            
+            Approvals.Verify(a.PrintStatement());
+        }
     }
     
 }
