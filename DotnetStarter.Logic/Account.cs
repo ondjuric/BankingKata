@@ -8,6 +8,7 @@ public class Account
     public void Deposit(int amount)
     {
         TransactionDate = DateGetter();
+        Amount = amount;
     }
 
     public string PrintStatement()
@@ -15,14 +16,14 @@ public class Account
         var tab = "\t";
         return $@"
                 Date       Amount    Balance
-                {TransactionDate} +500      500
+                {TransactionDate.ToString("dd.MM.yyyy")} +{Amount}      {Amount}
 
     ".RemoveIndentation();
     }
 
     public DateTime TransactionDate { get; set; }
 
-    public string Amount { get; set; }
+    public int Amount { get; set; }
 
     public void SetDateGetter(Func<DateTime> func)
     {
