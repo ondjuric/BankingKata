@@ -4,7 +4,6 @@ using System.Security.Principal;
 using ApprovalTests;
 using ApprovalTests.Core;
 using ApprovalTests.Reporters;
-using ApprovalUtilities.Utilities;
 using Xunit;
 
 namespace DotnetStarter.Logic.Tests
@@ -16,37 +15,20 @@ namespace DotnetStarter.Logic.Tests
         public void TestDeposit()
         {
             var a = new Account();
-            a.setDateGetter(() => new DateTime(2015, 12, 24));
+            a.SetDateGetter(() => new DateTime(2015, 12, 24));
             a.Deposit(500);
             Approvals.Verify(a.PrintStatement());
-        } 
-        
-        
-
-    }
-
-    public class Account
-    {
-        public void Deposit(int amount)
-        {
-            
         }
-
-        public string PrintStatement()
+        
+        [Fact]
+        public void TestDepositDate()
         {
-            var tab = "\t";
-            return $@"
-                Date       Amount    Balance
-                24.12.2015 +500      500
-
-    ".RemoveIndentation();
-        }
-
-        public string Amount { get; set; }
-
-        public void setDateGetter(Func<DateTime> func)
-        {
+            var a = new Account();
+            a.SetDateGetter(() => new DateTime(2015, 12, 25));
+            a.Deposit(500);
             
+            Approvals.Verify(a.PrintStatement());
         }
     }
+    
 }

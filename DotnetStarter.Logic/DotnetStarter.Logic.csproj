@@ -4,4 +4,8 @@
         <TargetFramework>net7.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ApprovalUtilities" Version="5.8.0" />
+    </ItemGroup>
+
 </Project>
